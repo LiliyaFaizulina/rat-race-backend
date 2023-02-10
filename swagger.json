@@ -1,0 +1,1011 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "version": "1.0.0",
+    "title": "Rat-race-API",
+    "description": "This is a sample Rat race Server based on the OpenAPI 3.0 specification."
+  },
+  "consumes": ["application/json", "multipart/form-data"],
+  "produces": ["application/json"],
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "gamer",
+      "description": "Operations about gamers"
+    },
+    {
+      "name": "credit",
+      "description": "Operations about credits"
+    },
+    {
+      "name": "equity",
+      "description": "Operations about equities"
+    },
+    {
+      "name": "expense",
+      "description": "Operations about expenses"
+    },
+    {
+      "name": "income",
+      "description": "Operations about income"
+    }
+  ],
+  "paths": {
+    "/api/auth/register": {
+      "post": {
+        "tags": [
+          "gamer"
+        ],
+        "summary": "Create gamer",
+        "description": "",
+        "operationId": "createGamer",
+        "requestBody": {
+          "description": "Created gamer object",
+          "required":true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "409": {
+            "description": "Email in use"
+          }
+        }
+        
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "gamer"
+        ],
+        "summary": "login gamer",
+        "description": "",
+        "operationId": "loginGamer",
+        "requestBody": {
+          "description": "",
+          "required":true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Email or password is wrong"
+          }
+        }
+      }
+    },
+    "/api/auth/logout": {
+      "get": {
+        "tags": [
+          "gamer"
+        ],
+        "summary": "Logs out current logged in gamer",
+        "description": "",
+        "operationId": "logoutGamer",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      }
+    },
+    "/api/auth/gamer": {
+      "get": {
+        "tags": [
+          "gamer"
+        ],
+        "summary": "Get current gamer",
+        "description": "",
+        "operationId": "getGamer",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      },
+      "put": {
+        "tags": [
+          "gamer"
+        ],
+        "summary": "Update gamer",
+        "description": "",
+        "operationId": "updateGamer",
+        "requestBody": {
+          "description": "",
+          "required":true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FieldsForUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      }
+    },
+    "/api/credits": {
+      "get": {
+        "tags": [
+          "credit"
+        ],
+        "summary": "Get gamer`s credits",
+        "description": "",
+        "operationId": "getCredits",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GamersCredits"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      },
+      "post": {
+        "tags": [
+          "credit"
+        ],
+        "summary": "Add new gamer`s credit",
+        "description": "",
+        "operationId": "addCredit",
+        "requestBody": {
+          "description": "",
+          "required":true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCredit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Credit"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      }
+    },
+    "/api/credits/{creditId}": {
+      "put": {
+        "tags": [
+          "credit"
+        ],
+        "summary": "Update credit",
+        "description": "",
+        "operationId": "updateCredits",
+        "parameters": [{"name": "creditId", "in": "path", "required": true}],
+        "requestBody": {
+          "description": "",
+          "required":true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreditToUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Credit"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      },
+      "delete": {
+        "tags": [
+          "credit"
+        ],
+        "summary": "Delete credit",
+        "description": "",
+        "operationId": "deleteCredit",
+        "parameters": [{"name": "creditId", "in": "path", "required": true}],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Credit"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      }
+    },
+    "/api/equities": {
+      "get": {
+        "tags": [
+          "equity"
+        ],
+        "summary": "Get gamer`s equities",
+        "description": "",
+        "operationId": "getEquities",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GamersEquities"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      },
+      "post": {
+        "tags": [
+          "equity"
+        ],
+        "summary": "Add new gamer`s equity",
+        "description": "",
+        "operationId": "addEquity",
+        "requestBody": {
+          "description": "",
+          "required":true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewEquity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equity"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      }
+    },
+    "/api/equities/{equityId}": {
+      "put": {
+        "tags": [
+          "equity"
+        ],
+        "summary": "Update equity",
+        "description": "",
+        "operationId": "updateEquity",
+        "parameters": [{"name": "equityId", "in": "path", "required": true}],
+        "requestBody": {
+          "description": "",
+          "required":true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EquityToUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equity"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      },
+      "delete": {
+        "tags": [
+          "equity"
+        ],
+        "summary": "Delete equity",
+        "description": "",
+        "operationId": "deleteEquity",
+        "parameters": [{"name": "equityId", "in": "path", "required": true}],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equity"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      }
+    },
+    "/api/expenses": {
+      "get": {
+        "tags": [
+          "expense"
+        ],
+        "summary": "Get gamer`s expenses",
+        "description": "",
+        "operationId": "getExpenses",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GamersExpenses"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      },
+      "post": {
+        "tags": [
+          "expense"
+        ],
+        "summary": "Add new gamer`s expense",
+        "description": "",
+        "operationId": "addExpense",
+        "requestBody": {
+          "description": "",
+          "required":true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewExpense"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Expense"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      }
+    },
+    "/api/expenses/{expenseId}": {
+      "put": {
+        "tags": [
+          "expense"
+        ],
+        "summary": "Update expense",
+        "description": "",
+        "operationId": "updateExpense",
+        "parameters": [{"name": "expenseId", "in": "path", "required": true}],
+        "requestBody": {
+          "description": "",
+          "required":true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExpenseToUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Expense"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      },
+      "delete": {
+        "tags": [
+          "expense"
+        ],
+        "summary": "Delete expense",
+        "description": "",
+        "operationId": "deleteExpense",
+        "parameters": [{"name": "expenseId", "in": "path", "required": true}],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Expense"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      }
+    },
+    "/api/income": {
+      "get": {
+        "tags": [
+          "income"
+        ],
+        "summary": "Get gamer`s income",
+        "description": "",
+        "operationId": "getIncome",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GamersIncome"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      },
+      "post": {
+        "tags": [
+          "income"
+        ],
+        "summary": "Add new gamer`s income",
+        "description": "",
+        "operationId": "addIncome",
+        "requestBody": {
+          "description": "",
+          "required":true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewIncome"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Income"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      }
+    },
+    "/api/income/{incomeId}": {
+      "put": {
+        "tags": [
+          "income"
+        ],
+        "summary": "Update income",
+        "description": "",
+        "operationId": "updateIncome",
+        "parameters": [{"name": "incomeId", "in": "path", "required": true}],
+        "requestBody": {
+          "description": "",
+          "required":true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncomeToUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Income"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      },
+      "delete": {
+        "tags": [
+          "income"
+        ],
+        "summary": "Delete income",
+        "description": "",
+        "operationId": "deleteIncome",
+        "parameters": [{"name": "incomeId", "in": "path", "required": true}],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Income"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security":[{"Bearer": []}]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuthRequest": {
+        "type": "object",
+        "required": ["name", "password"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Rat"
+          },
+          "password": {
+            "type": "string",
+            "example": "1234567"
+          }
+        }
+      },
+      "AuthResponse":{
+        "type": "object",
+        "properties": {
+          "gamer": {
+            "type": "object",
+            "$ref": "#/components/schemas/Gamer"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "Gamer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "63c6f80fab4874e768f0dd83"
+          },
+          "name": {
+            "type": "string",
+            "example": "Lena"
+          },
+          "position":{
+            "type": "string",
+            "example": "Job title"
+          },
+          "dream":{
+            "type": "string",
+            "example": "Your dream"
+          },
+          "dreamCost": {
+            "type": "integer",
+            "example": "0"
+          },
+          "debt": {
+            "type": "integer",
+            "example": "0"
+          },
+          "children": {
+            "type": "integer",
+            "example": "0"
+          }
+        }
+      },
+      "FieldsForUpdate": {
+        "type": "object",
+        "properties": {
+          "position":{
+            "type": "string",
+            "example": "Job title"
+          },
+          "dream":{
+            "type": "string",
+            "example": "Your dream"
+          },
+          "dreamCost": {
+            "type": "integer",
+            "example": "0"
+          },
+          "debt": {
+            "type": "integer",
+            "example": "0"
+          },
+          "children": {
+            "type": "integer",
+            "example": "0"
+          }
+        }
+      },
+      "Credit": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "63c6f80fab4874e768f0dd83"
+          },
+          "name": {
+            "type": "string",
+            "example": "Car"
+          },
+          "cost": {
+            "type": "integer",
+            "example": "1000"
+          },
+          "monthlyFee": {
+            "type": "integer",
+            "example": "100"
+          }
+        }
+      },
+      "GamersCredits":{
+        "type": "array",
+        "items": {
+          "type": "object",
+          "$ref": "#/components/schemas/Credit"
+        }
+      },
+      "NewCredit": {
+        "type": "object",
+        "required": ["name", "cost", "monthlyFee"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Car"
+          },
+          "cost": {
+            "type": "integer",
+            "example": "1000"
+          },
+          "monthlyFee": {
+            "type": "integer",
+            "example": "100"
+          }
+        }
+      },
+      "CreditToUpdate": {
+        "type": "object",
+        "required": ["cost"],
+        "properties": {
+          "cost": {
+            "type": "integer",
+            "example": "1000"
+          }
+        }
+      },
+      "Equity": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "63c6f80fab4874e768f0dd83"
+          },
+          "code": {
+            "type": "string",
+            "example": "UKT"
+          },
+          "quantity": {
+            "type": "integer",
+            "example": "1000"
+          },
+          "cost": {
+            "type": "integer",
+            "example": "100"
+          }
+        }
+      },
+      "GamersEquities":{
+        "type": "array",
+        "items": {
+          "type": "object",
+          "$ref": "#/components/schemas/Equity"
+        }
+      },
+      "NewEquity": {
+        "type": "object",
+        "required": ["code", "quantity", "cost"],
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": ["UKT", "KRS", "KCHG", "YKHZ", "DR"]
+          },
+          "quantity": {
+            "type": "integer",
+            "example": "1000"
+          },
+          "cost": {
+            "type": "integer",
+            "example": "100"
+          }
+        }
+      },
+      "EquityToUpdate": {
+        "type": "object",
+        "properties": {
+          "quantity": {
+            "type": "integer",
+            "example": "1000"
+          },
+          "cost": {
+            "type": "integer",
+            "example": "100"
+          }
+        }
+      },
+      "Expense": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "63c6f80fab4874e768f0dd83"
+          },
+          "category": {
+            "type": "string",
+            "example": "rent"
+          },
+          "sum": {
+            "type": "integer",
+            "example": "300"
+          }
+        }
+      },
+      "GamersExpenses":{
+        "type": "array",
+        "items": {
+          "type": "object",
+          "$ref": "#/components/schemas/Expense"
+        }
+      },
+      "NewExpense": {
+        "type": "object",
+        "required": ["category", "sum"],
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": ["utility-bills",
+            "rent",
+            "meal",
+            "education",
+            "training",
+            "clothes",
+            "gasoline",
+            "telephone",
+            "children",
+            "custody"]
+          },
+          "sum": {
+            "type": "integer",
+            "example": "300"
+          }
+        }
+      },
+      "ExpenseToUpdate": {
+        "type": "object",
+        "required":["sum"],
+        "properties": {
+          "sum": {
+            "type": "integer",
+            "example": "1000"
+          }
+        }
+      },
+      "Income": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "63c6f80fab4874e768f0dd83"
+          },
+          "category": {
+            "type": "string",
+            "example": "salary"
+          },
+          "sum": {
+            "type": "integer",
+            "example": "300"
+          }
+        }
+      },
+      "GamersIncome":{
+        "type": "array",
+        "items": {
+          "type": "object",
+          "$ref": "#/components/schemas/Income"
+        }
+      },
+      "NewIncome": {
+        "type": "object",
+        "required": ["category", "sum"],
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": ["salary", "real-estate", "small-business", "huge-business"]
+          },
+          "sum": {
+            "type": "integer",
+            "example": "300"
+          }
+        }
+      },
+      "IncomeToUpdate": {
+        "type": "object",
+        "required":["sum"],
+        "properties": {
+          "sum": {
+            "type": "integer",
+            "example": "1000"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "Bearer":{
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
