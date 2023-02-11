@@ -40,7 +40,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { name, password } = req.body;
-  const gamer = Gamer.findOne({ name });
+  const gamer = await Gamer.findOne({ name });
   if (!gamer) {
     throw HttpError(400, "Wrong name");
   }
@@ -86,7 +86,7 @@ const refreshGamer = async (req, res) => {
 
 const logout = async (req, res) => {
   const { _id } = req.gamer;
-  await User.findByIdAndUpdate(_id, { token: "" });
+  await Gamer.findByIdAndUpdate(_id, { token: "" });
   res.json({
     message: "Logout success",
   });
