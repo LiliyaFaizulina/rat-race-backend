@@ -5,7 +5,7 @@ const updateCredit = async (req, res) => {
   const credit = await Credit.findByIdAndUpdate(creditId, req.body, {
     new: true,
   });
-  res.json({ credit });
+  res.json(credit);
 };
 
 module.exports = updateCredit;

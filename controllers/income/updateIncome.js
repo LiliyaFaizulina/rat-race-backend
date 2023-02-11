@@ -5,7 +5,7 @@ const updateIncome = async (req, res) => {
   const income = await Income.findByIdAndUpdate(incomeId, req.body, {
     new: true,
   });
-  res.json({ income });
+  res.json(income);
 };
 
 module.exports = updateIncome;

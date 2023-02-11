@@ -243,7 +243,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "successful operation",
             "content": {
               "application/json": {
@@ -367,7 +367,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "successful operation",
             "content": {
               "application/json": {
@@ -491,7 +491,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "successful operation",
             "content": {
               "application/json": {
@@ -615,7 +615,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "successful operation",
             "content": {
               "application/json": {

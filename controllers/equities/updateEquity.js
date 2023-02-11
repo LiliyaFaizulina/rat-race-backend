@@ -5,7 +5,7 @@ const updateEquity = async (req, res) => {
   const equity = await Equity.findByIdAndUpdate(equityId, req.body, {
     new: true,
   });
-  res.json({ equity });
+  res.json(equity);
 };
 
 module.exports = updateEquity;

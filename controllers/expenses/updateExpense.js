@@ -5,7 +5,7 @@ const updateExpense = async (req, res) => {
   const expense = await Expense.findByIdAndUpdate(expenseId, req.body, {
     new: true,
   });
-  res.json({ expense });
+  res.json(expense);
 };
 
 module.exports = updateExpense;
