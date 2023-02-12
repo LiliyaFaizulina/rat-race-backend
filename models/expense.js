@@ -51,6 +51,20 @@ const addExpenseSchema = Joi.object({
 });
 
 const updateExpenseSchema = Joi.object({
+  category: Joi.string()
+    .allow(
+      "utility-bills",
+      "rent",
+      "meal",
+      "education",
+      "training",
+      "clothes",
+      "gasoline",
+      "telephone",
+      "children",
+      "custody"
+    )
+    .required(),
   sum: Joi.number().required(),
 });
 

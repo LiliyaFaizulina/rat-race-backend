@@ -44,11 +44,12 @@ const authSchema = Joi.object({
 });
 
 const updateGamer = Joi.object({
+  name: Joi.string(),
   position: Joi.string(),
   debt: Joi.number(),
   children: Joi.number(),
   dream: Joi.string(),
-  dreamCost: Joi.string(),
+  dreamCost: Joi.number(),
 });
 
 const schemas = {

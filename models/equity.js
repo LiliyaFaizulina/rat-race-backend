@@ -12,7 +12,7 @@ const equitySchema = new Schema(
       type: Number,
       required: true,
     },
-    cost: {
+    price: {
       type: Number,
       required: true,
     },
@@ -26,14 +26,14 @@ const equitySchema = new Schema(
 );
 
 const updateSchema = Joi.object({
-  cost: Joi.number().required(),
+  price: Joi.number().required(),
   quantity: Joi.number().required(),
 });
 
 const addEquity = Joi.object({
   code: Joi.string().allow("UKT", "KRS", "KCHG", "YKHZ", "DR").required(),
   quantity: Joi.number().required(),
-  cost: Joi.number().required(),
+  price: Joi.number().required(),
 });
 
 const schemas = {

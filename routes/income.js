@@ -17,6 +17,6 @@ router.post(
   validateBody(schemas.addIncomeSchema),
   controller.addIncome
 );
-router.delete("/:incomeId", authenticate, controller.addIncome);
+router.delete("/:incomeId", authenticate, controller.deleteIncome);
 
 module.exports = router;

@@ -523,7 +523,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ExpenseToUpdate"
+                "$ref": "#/components/schemas/NewExpense"
               }
             }
           }
@@ -647,7 +647,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/IncomeToUpdate"
+                "$ref": "#/components/schemas/NewIncome"
               }
             }
           }
@@ -853,7 +853,7 @@
             "type": "integer",
             "example": "1000"
           },
-          "cost": {
+          "price": {
             "type": "integer",
             "example": "100"
           }
@@ -878,7 +878,7 @@
             "type": "integer",
             "example": "1000"
           },
-          "cost": {
+          "price": {
             "type": "integer",
             "example": "100"
           }
@@ -891,7 +891,7 @@
             "type": "integer",
             "example": "1000"
           },
-          "cost": {
+          "price": {
             "type": "integer",
             "example": "100"
           }
@@ -944,16 +944,6 @@
           }
         }
       },
-      "ExpenseToUpdate": {
-        "type": "object",
-        "required":["sum"],
-        "properties": {
-          "sum": {
-            "type": "integer",
-            "example": "1000"
-          }
-        }
-      },
       "Income": {
         "type": "object",
         "properties": {
@@ -989,16 +979,6 @@
           "sum": {
             "type": "integer",
             "example": "300"
-          }
-        }
-      },
-      "IncomeToUpdate": {
-        "type": "object",
-        "required":["sum"],
-        "properties": {
-          "sum": {
-            "type": "integer",
-            "example": "1000"
           }
         }
       }

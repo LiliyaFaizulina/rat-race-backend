@@ -29,6 +29,9 @@ const addIncomeSchema = Joi.object({
 });
 
 const updateIncomeSchema = Joi.object({
+  category: Joi.string()
+    .allow("salary", "real-estate", "small-business", "huge-business")
+    .required(),
   sum: Joi.number().required(),
 });
 
