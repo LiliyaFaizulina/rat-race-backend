@@ -974,7 +974,7 @@
         "properties": {
           "category": {
             "type": "string",
-            "enum": ["salary", "real-estate", "small-business", "huge-business"]
+            "enum": ["salary", "real-estate", "business", "big-business"]
           },
           "sum": {
             "type": "integer",

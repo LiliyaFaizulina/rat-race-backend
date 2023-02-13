@@ -5,7 +5,7 @@ const incomeSchema = new Schema(
   {
     category: {
       type: String,
-      enum: ["salary", "real-estate", "small-business", "huge-business"],
+      enum: ["salary", "real-estate", "business", "big-business"],
       required: true,
     },
     sum: {
@@ -23,14 +23,14 @@ const incomeSchema = new Schema(
 
 const addIncomeSchema = Joi.object({
   category: Joi.string()
-    .allow("salary", "real-estate", "small-business", "huge-business")
+    .allow("salary", "real-estate", "business", "big-business")
     .required(),
   sum: Joi.number().required(),
 });
 
 const updateIncomeSchema = Joi.object({
   category: Joi.string()
-    .allow("salary", "real-estate", "small-business", "huge-business")
+    .allow("salary", "real-estate", "business", "big-business")
     .required(),
   sum: Joi.number().required(),
 });
