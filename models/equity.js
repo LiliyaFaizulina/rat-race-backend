@@ -26,6 +26,7 @@ const equitySchema = new Schema(
 );
 
 const updateSchema = Joi.object({
+  code: Joi.string().allow("UKT", "KRS", "KCHG", "YKHZ", "DR").required(),
   price: Joi.number().required(),
   quantity: Joi.number().required(),
 });

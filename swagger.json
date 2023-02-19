@@ -13,6 +13,9 @@
   },
   "servers": [
     {
+      "url": "https://rat-race-kbuq.onrender.com"
+    },
+    {
       "url": "http://localhost:4000"
     },
     {
@@ -399,7 +402,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EquityToUpdate"
+                "$ref": "#/components/schemas/NewEquity"
               }
             }
           }
@@ -754,6 +757,10 @@
           "children": {
             "type": "integer",
             "example": "0"
+          },
+          "note":{
+            "type": "string",
+            "example": "Your notes"
           }
         }
       },
@@ -779,6 +786,10 @@
           "children": {
             "type": "integer",
             "example": "0"
+          },
+          "note":{
+            "type": "string",
+            "example": "Your notes"
           }
         }
       },
@@ -874,19 +885,6 @@
             "type": "string",
             "enum": ["UKT", "KRS", "KCHG", "YKHZ", "DR"]
           },
-          "quantity": {
-            "type": "integer",
-            "example": "1000"
-          },
-          "price": {
-            "type": "integer",
-            "example": "100"
-          }
-        }
-      },
-      "EquityToUpdate": {
-        "type": "object",
-        "properties": {
           "quantity": {
             "type": "integer",
             "example": "1000"

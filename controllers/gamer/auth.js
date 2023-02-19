@@ -33,6 +33,7 @@ const register = async (req, res) => {
       dreamCost: newGamer.dreamCost,
       debt: newGamer.debt,
       children: newGamer.children,
+      note: newGamer.note,
     },
     token,
   });
@@ -62,13 +63,14 @@ const login = async (req, res) => {
       dreamCost: gamer.dreamCost,
       debt: gamer.debt,
       children: gamer.children,
+      note: gamer.note,
     },
     token,
   });
 };
 
 const refreshGamer = async (req, res) => {
-  const { _id, name, position, dream, dreamCost, debt, children, token } =
+  const { _id, name, position, dream, dreamCost, debt, children, note, token } =
     req.gamer;
   res.json({
     gamer: {
@@ -79,6 +81,7 @@ const refreshGamer = async (req, res) => {
       dreamCost,
       debt,
       children,
+      note,
     },
     token,
   });

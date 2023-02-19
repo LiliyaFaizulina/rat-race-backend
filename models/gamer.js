@@ -31,6 +31,10 @@ const gamerSchema = new Schema(
       type: Number,
       default: 0,
     },
+    note: {
+      type: String,
+      default: "Your notes",
+    },
     token: {
       type: String,
     },
@@ -50,6 +54,7 @@ const updateGamer = Joi.object({
   children: Joi.number(),
   dream: Joi.string(),
   dreamCost: Joi.number(),
+  note: Joi.string(),
 });
 
 const schemas = {
